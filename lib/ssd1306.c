@@ -125,11 +125,13 @@ void ssd1306_UpdateScreen()
 //
 void ssd1306_DrawPixel(uint8_t x, uint8_t y, SSD1306_COLOR color)
 {
-    if (x >= SSD1306_WIDTH || y >= SSD1306_HEIGHT)
+    if (x > SSD1306_WIDTH || y > SSD1306_HEIGHT)
     {
         // Don't write outside the buffer
         return;
     }
+    x++;
+    y++;
 
     // Check if pixel should be inverted
     if (SSD1306.Inverted)
